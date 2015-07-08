@@ -107,10 +107,12 @@ $link-color: #5daabe;
 // Main container
 $l-container-maximum-width: 1000;
 $l-container-apply-breakpoints-for-default: true;
+$l-container-apply-at-breakpoints: (lap, lap max);
 @import "../node_modules/scally/layout/l-container";
 
 // Grid
 @import "../node_modules/scally/layout/l-grid";
+
 
 /**
  * OBJECTS.
@@ -122,12 +124,6 @@ $o-list-apply-hanging-bullets: true;
 @import "../node_modules/scally/objects/o-list-block";
 
 @import "../node_modules/scally/objects/o-list-inline";
-
-
-/**
- * COMPONENTS.
- */
-
 
 
 /**
@@ -145,54 +141,71 @@ $o-list-apply-hanging-bullets: true;
 
 
 
-/* Mine
+/* Project Specific
    ========================================================================= */
+
+/**
+ * CORE.
+ */
+
+// Normalize
+small { font-size: 100%;}
+
+// Base
 h1 {
   color: $color-brand;
-  @extend %u-s-mb-small;
+  @include to-rem(margin-bottom, $spacing-half); 
 }
 
-h2 {
-  @extend %u-s-mb-none;
+h2 {margin-bottom: 0;}
+
+h3 {
+  @include to-rem(margin-bottom, $spacing-half);
+  @include to-rem(font-size, $font-size-small);
+  color: #888;
+  font-weight: normal;
 }
 
-abbr[title] {border: none;}
+
+/**
+ * COMPONENTS.
+ */
 
 footer {
-  @extend %u-s-pe-small;
+  @include to-rem(padding-top padding-bottom, $spacing-half);
   border-top: 1px solid #ccc;
   color: #888;
 }
 
-.icon {
-  @extend %u-s-mr-tiny;
-  width: 16px;
-  height: 16px;
+.c-box {
+  background: #f4f4f4;
+  border: 1px solid #CCC;
+  border-top: 0;
+  padding: 1rem;
+
+  @include respond-to(lap) {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+  } 
+}
+
+.c-tag {
+  background: #f4f4f4;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  @include to-rem(margin-right margin-bottom, $spacing-third);
+  @include to-rem(padding-left padding-right, $spacing-third);
+}
+
+.c-icon {
+  @include to-rem(width, 16);
+  @include to-rem(height, 16);
+  @include to-rem(margin-right, $spacing-third);
   display: inline-block;
   vertical-align: middle;
 }
 
-.block {
-  @extend %u-s-mb-base;
-}
-
-.block__subtitle {
-  @extend %u-s-mb-small;
-  @include to-rem(font-size, $font-size-small);
-  color: #888;
-}
-
-.name {
-  color: #000;
-  font-weight: normal;
-  //@include to-rem(font-size, $font-size-small);
-}
-
-.logo {
-  display: block;
-  text-align: center;
-}
-.avatar {
+.c-avatar {
   background: #fff;
   border: 1px solid #ccc;
   border-radius: 50%;
@@ -200,26 +213,28 @@ footer {
   width: 100px;
 }
 
-.contact-header {
-  margin: 0;
-  font-size: 1.125rem;
-  color: $color-black;
+.c-contact {
+  text-align: center;
+
+  @include respond-to(lap) {
+    text-align: left;
+  }
 }
 
-.profile {
-  background: #f4f4f4;
-  border: 1px solid #CCC;
-  border-top: 0;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
-  padding: 1rem;
-}
+  .c-contact__header {
+    margin: 0;
+    color: $color-black;
+  }
 
-.tag {
-  @extend %u-s-mr-tiny;
-  @extend %u-s-mb-tiny;
-  @extend %u-s-ps-tiny;
-  background: #f4f4f4;
-  border: 1px solid #CCC;
-  border-radius: 5px;
+
+
+//Clean up
+.logo {
+  display: block;
+  text-align: center;
+
+  h1 {
+    color: #000;
+    font-weight: normal;
+  }
 }
