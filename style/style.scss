@@ -170,7 +170,11 @@ h3 {
 /**
  * COMPONENTS.
  */
-
+nav {
+  @include to-rem(padding-top padding-bottom, $spacing-half);
+  border-bottom: 1px solid #ccc;
+  color: #888;
+}
 footer {
   @include to-rem(padding-top padding-bottom, $spacing-half);
   border-top: 1px solid #ccc;
@@ -227,6 +231,20 @@ footer {
   }
 
 
+
+.c-project {
+  @include to-rem(margin-bottom, $spacing-base);
+}
+
+  .c-project__example {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  .c-project__tool {
+    color: #888;
+    @include to-rem(font-size, $font-size-x-small);
+  }
 
 //Clean up
 .logo {
