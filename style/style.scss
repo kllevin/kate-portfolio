@@ -251,6 +251,11 @@ footer {
   display: block;
   text-align: center;
 
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+
   h1 {
     color: #000;
     font-weight: normal;
