@@ -239,6 +239,7 @@ footer {
   .c-project__example {
     border: 1px solid #ccc;
     border-radius: 5px;
+    @include to-rem(margin-bottom, $spacing-third);
   }
 
   .c-project__tool {
